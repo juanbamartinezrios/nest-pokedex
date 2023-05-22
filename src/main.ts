@@ -11,7 +11,12 @@ async function bootstrap() {
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true, // sólo deja las propiedades definidas, elimina las demás
-      forbidNonWhitelisted: true // en lugar de eliminar las propiedades no incluidas en la whitelist, el validator genera una exception
+      forbidNonWhitelisted: true, // en lugar de eliminar las propiedades no incluidas en la whitelist, el validator genera una exception
+      // transformación de queryParameters/dto's
+      transform: true,
+      transformOptions: {
+        enableImplicitConversion: true
+      }
     })
   )
 
